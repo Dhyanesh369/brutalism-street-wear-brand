@@ -39,10 +39,10 @@ export function ProductGrid() {
   return (
     <section id="archive" className="py-20 md:py-[160px] border-b border-white/10">
       <div className="container mx-auto px-[5%]">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
           {PRODUCTS.map((p, i) => (
             <Reveal key={p.id} delay={i * 0.1}>
-              <div className={`group relative ${p.status === "sold_out" ? "opacity-50" : ""}`}>
+              <div className={`group relative flex flex-col ${p.status === "sold_out" ? "opacity-50" : ""}`}>
                 <div 
                   onClick={() => {
                     if (p.status === "active") {
@@ -53,35 +53,58 @@ export function ProductGrid() {
                   className={`aspect-[4/5] overflow-hidden border border-white/10 relative transition-all duration-700 cursor-pointer glitch-hover ${p.status === "sold_out" ? "grayscale contrast-75 cursor-not-allowed" : "grayscale hover:grayscale-0 hover:scale-[1.02] contrast-110"}`}
                 >
                   <img src={p.image} alt={p.title} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
-                  <div className="absolute top-4 left-4 font-mono text-[9px] bg-black/60 px-2 py-1 border border-white/10">
+                  
+                  {/* TACTICAL METADATA OVERLAY (Desktop Only) */}
+                  <div className="absolute top-4 left-4 font-mono text-[9px] bg-black/80 px-2 py-1 border border-white/10 hidden md:block">
                     UNITS_REMAINING: {p.units}
                   </div>
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
+                  
+                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity hidden md:flex items-center justify-center pointer-events-none">
                     <div className="w-full h-full p-4 flex flex-col justify-between border border-accent/20">
-                      <div className="flex justify-between items-start">
-                         <span className="font-mono text-[8px] text-accent">DATA_STREAM_ACTIVE</span>
-                         <span className="font-mono text-[8px] text-accent">0{i+1}_LINK_OK</span>
-                      </div>
-                      <div className="flex-1 flex items-center justify-center">
-                         <span className="font-mono text-[11px] tracking-[0.2em] border border-white/20 px-4 py-2 bg-black/60">SECURE_ARTIFACT</span>
-                      </div>
-                      <div className="grid grid-cols-2 gap-2">
-                         <div className="p-2 border border-white/10 bg-black/40">
-                            <p className="font-mono text-[6px] text-dim uppercase">Structure</p>
-                            <p className="font-mono text-[8px] text-accent uppercase">{p.spec}</p>
-                         </div>
-                         <div className="p-2 border border-white/10 bg-black/40">
-                            <p className="font-mono text-[6px] text-dim uppercase">Security</p>
-                            <p className="font-mono text-[8px] text-accent uppercase">TIER_1_AUTH</p>
-                         </div>
-                      </div>
+                       <div className="flex justify-between items-start">
+                          <span className="font-mono text-[8px] text-accent">DATA_STREAM_ACTIVE</span>
+                          <span className="font-mono text-[8px] text-accent">0{i+1}_LINK_OK</span>
+                       </div>
+                       <div className="flex-1 flex items-center justify-center">
+                          <span className="font-mono text-[11px] tracking-[0.2em] border border-white/20 px-4 py-2 bg-black/60">SECURE_ARTIFACT</span>
+                       </div>
                     </div>
                   </div>
-                  {p.status === "sold_out" && <div className="absolute inset-0 flex items-center justify-center"><div className="bg-black border border-white/20 px-6 py-3 font-mono text-[10px] tracking-[0.2em]">ARCHIVE_CLOSED</div></div>}
+
+                  {p.status === "sold_out" && (
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/60">
+                      <div className="border border-white/20 px-6 py-3 font-mono text-[10px] tracking-[0.2em] uppercase">
+                        Archive_Closed
+                      </div>
+                    </div>
+                  )}
                 </div>
-                <div className="mt-8 flex justify-between">
-                  <div><h3 className="text-xl font-bold uppercase">{p.title}</h3><p className="font-mono text-[10px] opacity-40 uppercase">REF: {p.id} / {p.spec}</p></div>
-                  <p className={`font-mono text-[13px] ${p.status === "sold_out" ? "line-through text-dim" : "text-accent"}`}>{p.price}</p>
+
+                {/* MOBILE METADATA & INFO */}
+                <div className="mt-6 flex flex-col">
+                  <div className="flex justify-between items-start mb-2">
+                    <h3 className="text-xl md:text-2xl font-bold uppercase leading-none">{p.title}</h3>
+                    <p className={`font-mono text-[12px] md:text-[14px] ${p.status === "sold_out" ? "line-through text-dim" : "text-accent font-bold"}`}>
+                      {p.price}
+                    </p>
+                  </div>
+                  <div className="flex gap-4 font-mono text-[9px] text-dim uppercase tracking-widest">
+                    <span>REF: {p.id}</span>
+                    <span className="text-accent/60 md:text-dim">{p.spec}</span>
+                    <span className="md:hidden">UNITS: {p.units}</span>
+                  </div>
+                  
+                  {p.status === "active" && (
+                    <button 
+                      onClick={() => {
+                        addItem({ ...p, quantity: 1 });
+                        playBlip("mid");
+                      }}
+                      className="md:hidden mt-6 w-full border border-white/20 py-4 font-mono text-[10px] uppercase tracking-widest hover:border-accent hover:text-accent transition-colors"
+                    >
+                      Secure_Artifact
+                    </button>
+                  )}
                 </div>
               </div>
             </Reveal>

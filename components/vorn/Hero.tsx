@@ -26,7 +26,7 @@ export default function Hero() {
               </Reveal>
             </div>
           </div>
-          <div className="col-span-12 md:col-span-3 mt-16">
+          <div className="col-span-12 md:col-span-3 mt-16 flex justify-center md:block">
             <Reveal delay={0.4}>
               <a
                 href="/archive"

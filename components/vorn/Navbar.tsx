@@ -83,26 +83,28 @@ export default function Navbar() {
           </button>
         </div>
 
-        <div className="md:hidden flex items-center gap-6">
-          <button onClick={() => setCartOpen(true)} className="relative">
-            <ShoppingBag className="w-5 h-5 text-accent" />
-            {cartItemsCount > 0 && (
-              <span className="absolute -top-2 -right-2 bg-white text-black text-[9px] font-bold px-1 rounded-sm min-w-[14px] flex items-center justify-center">
-                {cartItemsCount}
-              </span>
-            )}
-          </button>
-          <button onClick={() => setMenuOpen(true)}>
-            <Menu className="w-6 h-6" />
-          </button>
+        <div className="md:hidden flex items-center">
+          {/* Mobile Spacer */}
         </div>
       </nav>
 
-      {/* MOBILE BOTTOM BAR (Phase 03) */}
-      <div className="md:hidden fixed bottom-0 left-0 w-full z-[1000] bg-black/80 backdrop-blur-xl border-t border-white/10 px-[5%] py-4 flex justify-between items-center">
-        <Link href="/archive" className="font-mono text-[10px] uppercase tracking-widest text-accent">Access_Archive</Link>
-        <div className="flex gap-6">
-          <button onClick={() => setCartOpen(true)} className="text-foreground relative">
+      {/* MOBILE BOTTOM BAR */}
+      <div className="md:hidden fixed bottom-0 left-0 w-full z-[1000] bg-black/90 backdrop-blur-xl border-t border-white/10 px-6 py-5 flex justify-between items-center">
+        <Link 
+          href="/archive" 
+          onClick={() => playBlip("mid")}
+          className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent font-bold"
+        >
+          Access_Archive
+        </Link>
+        <div className="flex gap-8">
+          <button 
+            onClick={() => {
+              setCartOpen(true);
+              playBlip("high");
+            }} 
+            className="text-foreground relative"
+          >
             <ShoppingBag className="w-5 h-5" />
             {cartItemsCount > 0 && (
               <span className="absolute -top-2 -right-2 bg-accent text-black text-[9px] font-bold px-1 rounded-sm min-w-[14px] flex items-center justify-center">
@@ -110,7 +112,15 @@ export default function Navbar() {
               </span>
             )}
           </button>
-          <button onClick={() => setMenuOpen(true)} className="text-foreground"><Menu className="w-5 h-5" /></button>
+          <button 
+            onClick={() => {
+              setMenuOpen(true);
+              playBlip("mid");
+            }} 
+            className="text-foreground"
+          >
+            <Menu className="w-6 h-6" />
+          </button>
         </div>
       </div>
 

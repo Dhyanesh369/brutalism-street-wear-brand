@@ -47,7 +47,7 @@ export default function ArtifactScan() {
           </svg>
 
           {/* DATA POINTS */}
-          <div className="absolute top-0 right-[-100px] text-left space-y-4">
+          <div className="absolute top-0 right-[-100px] text-left space-y-4 hidden lg:block">
              <div className="border-l border-accent/30 pl-4 py-2">
                 <p className="font-mono text-[8px] text-dim uppercase mb-1">Density_Scan</p>
                 <p className="font-mono text-[10px] text-accent">460GSM_JERSEY</p>
@@ -57,6 +57,18 @@ export default function ArtifactScan() {
                 <p className="font-mono text-[10px] text-accent">OVERSIZED_FRAME</p>
              </div>
           </div>
+        </div>
+
+        {/* Mobile Data Points */}
+        <div className="lg:hidden grid grid-cols-2 gap-4 mt-8 px-4">
+           <div className="border border-white/10 p-3 bg-white/[0.02]">
+              <p className="font-mono text-[7px] text-dim uppercase mb-1">Density_Scan</p>
+              <p className="font-mono text-[9px] text-accent">460GSM_JERSEY</p>
+           </div>
+           <div className="border border-white/10 p-3 bg-white/[0.02]">
+              <p className="font-mono text-[7px] text-dim uppercase mb-1">Structure</p>
+              <p className="font-mono text-[9px] text-accent">OVERSIZED_FRAME</p>
+           </div>
         </div>
 
         <div className="mt-12 flex justify-center gap-12 font-mono text-[9px] text-dim">
