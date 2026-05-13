@@ -1,0 +1,53 @@
+// app/archive/page.tsx
+import Navbar from "@/components/vorn/Navbar";
+import { ProductGrid, Footer } from "@/components/vorn/Sections";
+
+export default function ArchivePage() {
+  return (
+    <main className="min-h-screen bg-background pt-32">
+      <Navbar />
+      <div className="container mx-auto px-[5%] py-20">
+        <h1 className="text-8xl mb-8">THE_ARCHIVE</h1>
+        <p className="font-mono text-dim uppercase tracking-widest text-[11px] mb-20">SYSTEM_STATUS: OPERATIONAL // ALL_ARTIFACTS_LOADED</p>
+      </div>
+      <ProductGrid />
+      <Footer />
+    </main>
+  );
+}
+
+// app/documentation/page.tsx
+import Navbar from "@/components/vorn/Navbar";
+import { Lookbook, Footer } from "@/components/vorn/Sections";
+
+export function DocumentationPage() {
+  return (
+    <main className="min-h-screen bg-background pt-32">
+      <Navbar />
+      <div className="container mx-auto px-[5%] py-20">
+        <h1 className="text-8xl mb-8">DOCUMENTATION</h1>
+        <p className="font-mono text-dim uppercase tracking-widest text-[11px] mb-20">VISUAL_RECORDS // SECTOR_4 // ARCHIVE_01</p>
+      </div>
+      <Lookbook />
+      <Footer />
+    </main>
+  );
+}
+
+// app/manifesto/page.tsx
+import Navbar from "@/components/vorn/Navbar";
+import { Manifesto, Footer } from "@/components/vorn/Sections";
+
+export function ManifestoPage() {
+  return (
+    <main className="min-h-screen bg-background pt-32">
+      <Navbar />
+      <div className="container mx-auto px-[5%] py-20">
+        <h1 className="text-8xl mb-8">MANIFESTO</h1>
+        <p className="font-mono text-dim uppercase tracking-widest text-[11px] mb-20">CORE_IDENTITY // BEYOND_THE_DARK</p>
+      </div>
+      <Manifesto />
+      <Footer />
+    </main>
+  );
+}
