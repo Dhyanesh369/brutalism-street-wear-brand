@@ -26,7 +26,13 @@ export default function IndustrialStats() {
   return (
     <div className="grid grid-cols-2 md:grid-cols-4 gap-0 border border-white/10">
       {stats.map((s, i) => (
-        <div key={s.label} className={`p-8 border-white/10 ${i !== stats.length - 1 ? "md:border-r" : ""} ${i < 2 ? "border-b md:border-b-0" : ""}`}>
+        <div 
+          key={s.label} 
+          className={`p-8 border-white/10 
+            ${i % 2 === 0 ? "border-r" : ""} 
+            ${i < 2 ? "border-b" : ""} 
+            md:border-b-0 md:border-r last:md:border-r-0`}
+        >
            <p className="font-mono text-[9px] text-dim mb-4 tracking-[0.2em]">{s.label}</p>
            <div className="flex items-baseline gap-2">
               <span className="text-4xl font-display text-accent">{s.value}</span>

@@ -12,11 +12,11 @@ export function Manifesto() {
     <section id="manifesto" className="py-20 md:py-[160px] border-b border-white/10">
       <div className="container">
         <div className="grid grid-cols-12 gap-0">
-          <div className="col-span-12 lg:col-span-7 lg:col-start-2">
+          <div className="col-span-12 lg:col-span-7 lg:col-start-2 text-center lg:text-left">
             <Reveal><p className="font-mono text-[10px] md:text-[11px] uppercase tracking-[0.3em] text-accent mb-8">/ IDENTITY_PROTOCOL // SECTOR_1</p></Reveal>
             <Reveal delay={0.1}><h2 className="text-5xl md:text-8xl mb-12">THE ARCHITECTURE<br />OF THE UNDERGROUND.</h2></Reveal>
             <Reveal delay={0.2}>
-              <p className="text-base md:text-xl text-foreground/80 max-w-2xl mb-12 leading-relaxed">
+              <p className="text-base md:text-xl text-foreground/80 max-w-2xl mb-12 leading-relaxed mx-auto lg:mx-0">
                 VORN exists in the margins. We do not participate in the noise. We build artifacts of identity for those who move with intentionality. Permanent documentation of the undercurrent.
               </p>
             </Reveal>
@@ -145,7 +145,7 @@ export function Lookbook() {
               </div>
             </Reveal>
           </div>
-          <div className="col-span-12 lg:col-span-4 lg:col-start-9 mt-12 lg:mt-0">
+          <div className="col-span-12 lg:col-span-4 lg:col-start-9 mt-12 lg:mt-0 text-center lg:text-left">
             <Reveal><p className="font-mono text-[10px] md:text-[11px] uppercase tracking-[0.3em] text-accent mb-8">/ DOCUMENT_01 // SECTOR_4</p></Reveal>
             <Reveal delay={0.2}><h2 className="text-5xl md:text-8xl mb-8 leading-[0.85]">NIGHT<br />TRAJECTORY</h2></Reveal>
             <Reveal delay={0.3}><p className="text-dim text-sm md:text-base mb-12">Sector 4 surveillance. Documentation of movement through concrete and shadow. No models. Only presence.</p></Reveal>
@@ -216,11 +216,11 @@ export function FeaturedDetail() {
               </div>
             </Reveal>
           </div>
-          <div className="col-span-12 lg:col-span-4 lg:col-start-9 mt-12 lg:mt-0">
+          <div className="col-span-12 lg:col-span-4 lg:col-start-9 mt-12 lg:mt-0 text-center lg:text-left flex flex-col items-center lg:items-start">
             <Reveal><p className="font-mono text-[10px] md:text-[11px] uppercase tracking-[0.3em] text-accent mb-8">/ SECURE_PROTOCOL</p></Reveal>
             <Reveal delay={0.1}><h2 className="text-5xl md:text-8xl mb-12">{item.title}</h2></Reveal>
             <Reveal delay={0.2}>
-              <div className="grid grid-cols-2 border border-white/10 mb-12">
+              <div className="grid grid-cols-2 border border-white/10 mb-12 w-full">
                 <div className="p-4 md:p-6 border-r border-b border-white/10"><p className="font-mono text-[8px] md:text-[9px] text-dim mb-2">Material</p><p className="text-[10px] md:text-xs uppercase font-bold">460GSM_JERSEY</p></div>
                 <div className="p-4 md:p-6 border-b border-white/10"><p className="font-mono text-[8px] md:text-[9px] text-dim mb-2">Frame</p><p className="text-[10px] md:text-xs uppercase font-bold">BOX_OVERSIZE</p></div>
                 <div className="p-4 md:p-6 border-r border-white/10"><p className="font-mono text-[8px] md:text-[9px] text-dim mb-2">Origin</p><p className="text-[10px] md:text-xs uppercase font-bold">SECTOR_4</p></div>
@@ -234,7 +234,7 @@ export function FeaturedDetail() {
                   playBlip("mid");
                 }}
                 style={{ backgroundColor: '#C8FF00' }}
-                className="inline-block text-black font-mono text-[11px] font-bold px-12 py-6 tracking-[0.1em] hover:bg-white transition-colors relative z-50"
+                className="text-black font-mono text-[11px] font-bold px-12 py-6 tracking-[0.1em] hover:bg-white transition-colors w-full md:w-auto relative z-50"
               >
                 Secure Artifact
               </button>
@@ -254,12 +254,12 @@ export function Newsletter() {
   return (
     <section className="py-20 md:py-[160px] bg-white/[0.02]">
       <div className="container">
-        <div className="grid grid-cols-12 gap-12">
+        <div className="grid grid-cols-12 gap-12 text-center lg:text-left">
           <div className="col-span-12 lg:col-span-7">
             <Reveal><p className="font-mono text-[10px] md:text-[11px] uppercase tracking-[0.3em] text-accent mb-8">/ ACCESS_REQUEST // SECTOR_X</p></Reveal>
             <Reveal delay={0.1}><h2 className="text-5xl md:text-8xl mb-8">JOIN THE SYSTEM.</h2></Reveal>
           </div>
-          <div className="col-span-12 lg:col-span-5 flex items-end">
+          <div className="col-span-12 lg:col-span-5 flex items-end justify-center lg:justify-start">
             <Reveal width="100%" delay={0.3}>
               {submitted ? (
                 <div className="w-full border-b border-accent pb-6 font-mono text-accent text-xs">

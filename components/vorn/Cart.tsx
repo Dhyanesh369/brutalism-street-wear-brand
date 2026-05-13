@@ -5,6 +5,7 @@ import { X, Trash2, Plus, Minus, ShoppingBag } from "lucide-react";
 import { useCart } from "@/lib/context/CartContext";
 import { useSystemAudio } from "@/lib/context/SystemAudioContext";
 import { useState } from "react";
+import Image from "next/image";
 
 export default function Cart() {
   const { cart, removeItem, updateQuantity, isCartOpen, setCartOpen, clearCart } = useCart();
@@ -23,11 +24,16 @@ export default function Cart() {
     setTimeout(() => {
       setIsProcessing(false);
       playSuccess();
-      alert("ORDER_PROCESSED // DISPATCH_SEQUENCING_INITIATED");
-      clearCart();
-      setCartOpen(false);
+      setSubmitted(true);
+      setTimeout(() => {
+        clearCart();
+        setCartOpen(false);
+        setSubmitted(false);
+      }, 2000);
     }, 2000);
   };
+
+  const [submitted, setSubmitted] = useState(false);
 
   return (
     <AnimatePresence>
@@ -88,11 +94,12 @@ export default function Cart() {
               ) : (
                 cart.map((item) => (
                   <div key={item.id} className="flex gap-6 group">
-                    <div className="w-24 h-32 bg-surface border border-white/10 overflow-hidden flex-shrink-0 grayscale">
-                      <img
+                    <div className="w-24 h-32 bg-surface border border-white/10 overflow-hidden flex-shrink-0 grayscale relative">
+                      <Image
                         src={item.image}
                         alt={item.title}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-110"
                       />
                     </div>
                     <div className="flex-1 flex flex-col justify-between py-1">
@@ -150,13 +157,20 @@ export default function Cart() {
                   <span className="font-mono text-xs uppercase text-dim">Total_Value</span>
                   <span className="text-2xl font-bold text-accent">{total.toFixed(2)} USD</span>
                 </div>
-                <button 
-                  disabled={isProcessing}
-                  onClick={handleCheckout}
-                  className="w-full bg-accent text-black font-mono font-bold py-5 uppercase tracking-widest hover:bg-white transition-colors flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {isProcessing ? "PROCESSING_PAYMENT..." : "Initiate_Checkout_Protocol"}
-                </button>
+                {submitted ? (
+                  <div className="w-full border border-accent p-5 font-mono text-accent text-[11px] text-center uppercase tracking-widest">
+                    ORDER_PROCESSED // DISPATCH_INITIATED
+                  </div>
+                ) : (
+                  <button 
+                    disabled={isProcessing}
+                    onClick={handleCheckout}
+                    style={{ backgroundColor: '#C8FF00' }}
+                    className="w-full text-black font-mono font-bold py-5 uppercase tracking-widest hover:bg-white transition-colors flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed relative z-50"
+                  >
+                    {isProcessing ? "PROCESSING_PAYMENT..." : "Initiate_Checkout_Protocol"}
+                  </button>
+                )}
                 <p className="text-center font-mono text-[9px] text-dim mt-4 uppercase tracking-tighter">
                   Secure encrypted transmission // Tier 1 Logistics
                 </p>

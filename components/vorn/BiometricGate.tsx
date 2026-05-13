@@ -92,7 +92,8 @@ export default function BiometricGate({ children }: { children: React.ReactNode 
         {status === "idle" && (
           <button
             onClick={startScan}
-            className="w-full bg-accent text-black font-mono font-bold py-4 md:py-5 tracking-[0.2em] hover:bg-white transition-colors flex items-center justify-center gap-3 text-xs md:text-sm"
+            style={{ backgroundColor: '#C8FF00' }}
+            className="w-full text-black font-mono font-bold py-5 tracking-[0.2em] hover:bg-white transition-colors flex items-center justify-center gap-3 text-xs md:text-sm relative z-50"
           >
             <Lock className="w-4 h-4" />
             INITIATE_SCAN
