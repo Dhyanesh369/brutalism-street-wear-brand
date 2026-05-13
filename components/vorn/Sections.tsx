@@ -103,16 +103,18 @@ export function ProductGrid() {
                   </div>
                   
                   {p.status === "active" && (
-                    <button 
-                      onClick={() => {
-                        addItem({ ...p, quantity: 1 });
-                        playBlip("mid");
-                      }}
-                      style={{ backgroundColor: '#C8FF00' }}
-                      className="md:hidden mt-6 w-full text-black font-mono text-[11px] font-bold py-4 uppercase tracking-[0.2em] hover:bg-white transition-colors relative z-50"
-                    >
-                      Secure_Artifact
-                    </button>
+                    <div className="flex justify-center mt-8">
+                      <button 
+                        onClick={() => {
+                          addItem({ ...p, quantity: 1 });
+                          playBlip("mid");
+                        }}
+                        style={{ backgroundColor: '#C8FF00' }}
+                        className="inline-block text-black font-mono text-[11px] uppercase font-bold px-12 py-6 tracking-[0.1em] hover:bg-white transition-colors relative z-50"
+                      >
+                        Secure_Artifact
+                      </button>
+                    </div>
                   )}
                 </div>
               </div>
@@ -232,7 +234,7 @@ export function FeaturedDetail() {
                   playBlip("mid");
                 }}
                 style={{ backgroundColor: '#C8FF00' }}
-                className="text-black font-mono text-[11px] font-bold px-12 py-6 tracking-[0.1em] hover:bg-white transition-colors w-full md:w-auto relative z-50"
+                className="inline-block text-black font-mono text-[11px] font-bold px-12 py-6 tracking-[0.1em] hover:bg-white transition-colors relative z-50"
               >
                 Secure Artifact
               </button>
