@@ -7,7 +7,7 @@ import { useSystemAudio } from "@/lib/context/SystemAudioContext";
 // MANIFESTO
 export function Manifesto() {
   return (
-    <section id="manifesto" className="py-[160px] border-b border-white/10">
+    <section id="manifesto" className="py-20 md:py-[160px] border-b border-white/10">
       <div className="container mx-auto px-[5%]">
         <div className="grid grid-cols-12 gap-0">
           <div className="col-span-12 lg:col-span-7 lg:col-start-2">
@@ -37,7 +37,7 @@ export function ProductGrid() {
   ];
 
   return (
-    <section id="archive" className="py-[160px] border-b border-white/10">
+    <section id="archive" className="py-20 md:py-[160px] border-b border-white/10">
       <div className="container mx-auto px-[5%]">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {PRODUCTS.map((p, i) => (
@@ -96,7 +96,7 @@ export function ProductGrid() {
 export function Lookbook() {
   const { playBlip } = useSystemAudio();
   return (
-    <section id="lookbook" className="py-[160px] border-b border-white/10">
+    <section id="lookbook" className="py-20 md:py-[160px] border-b border-white/10">
       <div className="container mx-auto px-[5%]">
         <div className="grid grid-cols-12 gap-0 items-center">
           <div className="col-span-12 lg:col-span-7">
@@ -136,7 +136,7 @@ export function FeaturedDetail() {
   };
 
   return (
-    <section className="py-[160px] border-b border-white/10">
+    <section className="py-20 md:py-[160px] border-b border-white/10">
       <div className="container mx-auto px-[5%]">
         <div className="grid grid-cols-12 gap-0 items-center">
           <div className="col-span-12 lg:col-span-6 lg:col-start-2">
@@ -204,7 +204,7 @@ export function FeaturedDetail() {
 export function Newsletter() {
   const { playSuccess } = useSystemAudio();
   return (
-    <section className="py-[160px] bg-white/[0.02]">
+    <section className="py-20 md:py-[160px] bg-white/[0.02]">
       <div className="container mx-auto px-[5%]">
         <div className="grid grid-cols-12 gap-12">
           <div className="col-span-12 lg:col-span-7">

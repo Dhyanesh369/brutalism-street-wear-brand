@@ -41,7 +41,7 @@ export default function BiometricGate({ children }: { children: React.ReactNode 
       <motion.div 
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        className="relative max-w-md w-full border border-white/10 p-12 bg-surface/50 backdrop-blur-xl flex flex-col items-center"
+        className="relative max-w-md w-full border border-white/10 p-6 md:p-12 bg-surface/50 backdrop-blur-xl flex flex-col items-center"
       >
         <div className="absolute top-0 left-0 w-full h-1 bg-white/5 overflow-hidden">
           <motion.div 
@@ -51,16 +51,16 @@ export default function BiometricGate({ children }: { children: React.ReactNode 
           />
         </div>
 
-        <div className="mb-12 relative">
+        <div className="mb-8 md:mb-12 relative">
            <AnimatePresence mode="wait">
              {status === "idle" && (
                <motion.div key="idle" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-                 <Fingerprint className="w-20 h-20 text-dim" />
+                 <Fingerprint className="w-16 h-16 md:w-20 md:h-20 text-dim" />
                </motion.div>
              )}
              {status === "scanning" && (
                <motion.div key="scanning" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="relative">
-                 <Fingerprint className="w-20 h-20 text-accent animate-pulse" />
+                 <Fingerprint className="w-16 h-16 md:w-20 md:h-20 text-accent animate-pulse" />
                  <motion.div 
                     className="absolute inset-0 border-b-2 border-accent"
                     animate={{ top: ["0%", "100%", "0%"] }}
@@ -69,20 +69,20 @@ export default function BiometricGate({ children }: { children: React.ReactNode 
                </motion.div>
              )}
              {status === "success" && (
-               <motion.div key="success" initial={{ scale: 0 }} animate={{ scale: 1 }} className="bg-accent rounded-full p-6 text-black">
-                 <ShieldCheck className="w-12 h-12" />
+               <motion.div key="success" initial={{ scale: 0 }} animate={{ scale: 1 }} className="bg-accent rounded-full p-4 md:p-6 text-black">
+                 <ShieldCheck className="w-10 h-10 md:w-12 md:h-12" />
                </motion.div>
              )}
            </AnimatePresence>
         </div>
 
-        <div className="text-center mb-12">
-           <p className="font-mono text-[10px] text-accent tracking-[0.4em] mb-2 uppercase">
+        <div className="text-center mb-8 md:mb-12">
+           <p className="font-mono text-[9px] md:text-[10px] text-accent tracking-[0.4em] mb-2 uppercase">
              {status === "idle" ? "// IDENTITY_VERIFICATION_REQUIRED" : 
               status === "scanning" ? `// SCANNING_SECTOR_DATA: ${progress}%` :
               "// ACCESS_GRANTED"}
            </p>
-           <h2 className="text-4xl font-display uppercase leading-tight">
+           <h2 className="text-3xl md:text-4xl font-display uppercase leading-tight">
              {status === "idle" ? "ARCHIVE_LOCKED" : 
               status === "scanning" ? "ANALYZING..." :
               "IDENTITY_CONFIRMED"}
@@ -92,27 +92,27 @@ export default function BiometricGate({ children }: { children: React.ReactNode 
         {status === "idle" && (
           <button
             onClick={startScan}
-            className="w-full bg-accent text-black font-mono font-bold py-5 tracking-[0.2em] hover:bg-white transition-colors flex items-center justify-center gap-3"
+            className="w-full bg-accent text-black font-mono font-bold py-4 md:py-5 tracking-[0.2em] hover:bg-white transition-colors flex items-center justify-center gap-3 text-xs md:text-sm"
           >
             <Lock className="w-4 h-4" />
             INITIATE_SCAN
           </button>
         )}
 
-        <div className="mt-12 w-full grid grid-cols-2 gap-4">
-           <div className="p-4 border border-white/10">
+        <div className="mt-8 md:mt-12 w-full grid grid-cols-2 gap-4">
+           <div className="p-3 md:p-4 border border-white/10">
               <p className="font-mono text-[7px] text-dim mb-1 uppercase">Latency</p>
               <p className="font-mono text-[9px] text-accent">14MS</p>
            </div>
-           <div className="p-4 border border-white/10">
+           <div className="p-3 md:p-4 border border-white/10">
               <p className="font-mono text-[7px] text-dim mb-1 uppercase">Uplink</p>
               <p className="font-mono text-[9px] text-accent">STABLE</p>
            </div>
         </div>
 
-        <div className="mt-8 flex items-center gap-2 text-dim">
-           <AlertTriangle className="w-3 h-3" />
-           <p className="font-mono text-[8px] uppercase tracking-tighter">SECURE_PROTOCOL_LEVEL_4 // AUTHORIZED_ACCESS_ONLY</p>
+        <div className="mt-6 md:mt-8 flex items-center gap-2 text-dim text-center">
+           <AlertTriangle className="w-3 h-3 flex-shrink-0" />
+           <p className="font-mono text-[7px] md:text-[8px] uppercase tracking-tighter">SECURE_PROTOCOL_LEVEL_4 // AUTHORIZED_ACCESS_ONLY</p>
         </div>
       </motion.div>
     </div>

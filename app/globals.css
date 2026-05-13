@@ -23,8 +23,8 @@
   --border: #1A1A1A;
   --dim: #8A8A8A;
   
-  --h1: clamp(100px, 18vw, 240px);
-  --h2: clamp(60px, 10vw, 120px);
+  --h1: clamp(60px, 18vw, 240px);
+  --h2: clamp(40px, 10vw, 120px);
   --h3: 14px;
   
   --ease-heavy: cubic-bezier(0.2, 0, 0, 1);
@@ -98,7 +98,7 @@
 
 @layer utilities {
   .text-huge {
-    font-size: clamp(100px, 18vw, 240px);
+    font-size: clamp(60px, 18vw, 240px);
   }
   
   .forensic-crop {

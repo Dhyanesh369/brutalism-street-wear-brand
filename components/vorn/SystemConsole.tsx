@@ -109,7 +109,7 @@ export default function SystemConsole() {
               initial={{ opacity: 0, y: 20, scale: 0.95 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 20, scale: 0.95 }}
-              className="absolute bottom-full mb-4 left-0 w-[400px] h-[350px] bg-black/95 backdrop-blur-xl border border-white/10 flex flex-col shadow-2xl scanlines"
+              className="absolute bottom-full mb-4 left-0 right-0 md:right-auto md:w-[400px] h-[300px] md:h-[350px] bg-black/95 backdrop-blur-xl border border-white/10 flex flex-col shadow-2xl scanlines z-[5000]"
             >
               <div className="p-4 border-b border-white/10 flex justify-between items-center bg-white/[0.02]">
                 <div className="flex items-center gap-2">
