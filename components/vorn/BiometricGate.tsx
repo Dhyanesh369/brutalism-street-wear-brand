@@ -8,6 +8,7 @@ import { useSystemAudio } from "@/lib/context/SystemAudioContext";
 export default function BiometricGate({ children }: { children: React.ReactNode }) {
   const [status, setStatus] = useState<"idle" | "scanning" | "success" | "error">("idle");
   const [progress, setProgress] = useState(0);
+  const [isUnlocked, setIsUnlocked] = useState(false);
   const { playBlip, playSuccess, playError } = useSystemAudio();
 
   const startScan = () => {
@@ -24,11 +25,12 @@ export default function BiometricGate({ children }: { children: React.ReactNode 
         clearInterval(interval);
         setStatus("success");
         playSuccess();
+        setTimeout(() => setIsUnlocked(true), 1200);
       }
     }, 40);
   };
 
-  if (status === "success") return <>{children}</>;
+  if (isUnlocked) return <>{children}</>;
 
   return (
     <div className="fixed inset-0 z-[5000] bg-black flex items-center justify-center p-[5%]">
