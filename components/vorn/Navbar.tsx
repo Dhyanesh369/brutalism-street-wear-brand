@@ -124,13 +124,13 @@ export default function Navbar() {
               <button onClick={() => setMenuOpen(false)}><X className="w-8 h-8" /></button>
             </div>
             
-            <div className="flex flex-col gap-8">
+            <div className="flex flex-col gap-6">
               {navLinks.map((link) => (
                 <Link 
                   key={link.name} 
                   href={link.href} 
                   onClick={() => setMenuOpen(false)}
-                  className="text-6xl uppercase leading-none hover:text-accent transition-colors"
+                  className="text-[clamp(28px,10vw,48px)] font-display uppercase leading-none hover:text-accent transition-colors tracking-tighter"
                 >
                   {link.name}
                 </Link>
@@ -138,7 +138,7 @@ export default function Navbar() {
               <Link 
                 href="/" 
                 onClick={() => setMenuOpen(false)}
-                className="text-6xl uppercase leading-none text-accent"
+                className="text-[clamp(28px,10vw,48px)] font-display uppercase leading-none text-accent tracking-tighter"
               >
                 Home
               </Link>

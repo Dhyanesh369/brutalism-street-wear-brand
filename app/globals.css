@@ -8,9 +8,9 @@
   --color-border: #1A1A1A;
   --color-dim: #8A8A8A;
   
-  --font-display: "var(--font-display)", sans-serif;
-  --font-mono: "var(--font-mono)", monospace;
-  --font-sans: "var(--font-sans)", sans-serif;
+  --font-display: var(--font-bebas), sans-serif;
+  --font-mono: var(--font-space-mono), monospace;
+  --font-sans: var(--font-inter), sans-serif;
   
   --ease-heavy: cubic-bezier(0.2, 0, 0, 1);
 }

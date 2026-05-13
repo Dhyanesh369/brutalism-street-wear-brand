@@ -13,9 +13,9 @@ import PageTransition from "@/components/vorn/PageTransition";
 import ParticleBackground from "@/components/vorn/ParticleBackground";
 import SectorStatus from "@/components/vorn/SectorStatus";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
-const bebas = Bebas_Neue({ weight: "400", subsets: ["latin"], variable: "--font-display" });
-const spaceMono = Space_Mono({ weight: ["400", "700"], subsets: ["latin"], variable: "--font-mono" });
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const bebas = Bebas_Neue({ weight: "400", subsets: ["latin"], variable: "--font-bebas" });
+const spaceMono = Space_Mono({ weight: ["400", "700"], subsets: ["latin"], variable: "--font-space-mono" });
 
 export const metadata: Metadata = {
   title: "VORN | Built in the Dark",
