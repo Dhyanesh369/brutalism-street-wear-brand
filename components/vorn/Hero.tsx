@@ -8,7 +8,7 @@ import Image from "next/image";
 export default function Hero() {
   return (
     <header className="relative h-[80vh] md:h-screen w-full flex items-center overflow-hidden">
-      <div className="container mx-auto px-[5%] z-20">
+      <div className="container mx-auto px-[5%] z-30">
         <div className="grid grid-cols-12 gap-0 relative">
           <div className="col-span-12 relative">
             <Reveal>
@@ -31,7 +31,8 @@ export default function Hero() {
             <Reveal delay={0.4}>
               <a
                 href="/archive"
-                className="inline-block !bg-[#C8FF00] text-black font-mono text-[11px] uppercase font-bold px-12 py-6 tracking-[0.1em] hover:bg-white transition-colors"
+                style={{ backgroundColor: '#C8FF00' }}
+                className="inline-block text-black font-mono text-[11px] uppercase font-bold px-12 py-6 tracking-[0.1em] hover:bg-white transition-colors relative z-50"
               >
                 ENTER_WAREHOUSE
               </a>
