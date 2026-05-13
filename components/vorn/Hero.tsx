@@ -3,10 +3,11 @@
 import Reveal from "./Reveal";
 import ScrambleHeader from "./ScrambleHeader";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Hero() {
   return (
-    <header className="relative h-screen w-full flex items-center overflow-hidden">
+    <header className="relative h-[80vh] md:h-screen w-full flex items-center overflow-hidden">
       <div className="container mx-auto px-[5%] z-20">
         <div className="grid grid-cols-12 gap-0 relative">
           <div className="col-span-12 relative">
@@ -41,10 +42,12 @@ export default function Hero() {
 
       <div className="absolute inset-0 z-10">
         <div className="w-full h-full bg-[radial-gradient(circle_at_center,rgba(10,10,10,0)_0%,rgba(10,10,10,0.9)_100%)] absolute inset-0 z-20" />
-        <img
+        <Image
           src="/images/hero.png"
           alt="VORN Hero"
-          className="w-full h-full object-cover grayscale contrast-125 opacity-40 z-10"
+          fill
+          priority
+          className="object-cover grayscale contrast-125 opacity-40 z-10"
         />
       </div>
     </header>

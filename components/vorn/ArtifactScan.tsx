@@ -18,7 +18,7 @@ export default function ArtifactScan() {
           // INITIALIZING_3D_SCAN_ARTIFACT_AR-001
         </motion.p>
 
-        <div className="relative w-[300px] h-[400px] mx-auto">
+        <div className="relative w-full max-w-[300px] h-[400px] mx-auto">
           {/* WIREFRAME SIMULATION */}
           <svg viewBox="0 0 100 140" className="w-full h-full text-accent/20">
             <motion.path

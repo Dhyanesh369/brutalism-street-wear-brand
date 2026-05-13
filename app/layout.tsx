@@ -32,14 +32,13 @@ export default function RootLayout({
       <body suppressHydrationWarning className="min-h-full flex flex-col bg-background text-foreground font-sans">
         <CartProvider>
           <SystemAudioProvider>
-            <div className="noise-overlay" />
             <ParticleBackground />
             <CustomCursor />
             <SectorStatus />
             <Cart />
             <SystemConsole />
             <Navbar />
-            <main className="flex-1">
+            <main className="flex-1 pt-[100px] md:pt-[120px] overflow-x-hidden">
               <PageTransition>
                 {children}
               </PageTransition>

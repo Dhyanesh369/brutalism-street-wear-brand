@@ -189,8 +189,7 @@ export function FeaturedDetail() {
                    </div>
                 </div>
 
-                {/* NOISE OVERLAY */}
-                <div className="absolute inset-0 bg-[url('https://media.giphy.com/media/oEI9uWUicKgZ2/giphy.gif')] opacity-5 mix-blend-overlay pointer-events-none" />
+                {/* NOISE OVERLAY (Handled by global CSS) */}
               </div>
             </Reveal>
           </div>
