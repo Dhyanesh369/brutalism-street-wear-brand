@@ -22,6 +22,13 @@ export const metadata: Metadata = {
   description: "Industrial streetwear artifacts. Documenting the undercurrent. Engineered for endurance.",
 };
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{

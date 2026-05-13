@@ -1,20 +1,22 @@
 "use client";
 
+import { useState } from "react";
 import Reveal from "./Reveal";
 import { useCart } from "@/lib/context/CartContext";
 import { useSystemAudio } from "@/lib/context/SystemAudioContext";
+import Image from "next/image";
 
 // MANIFESTO
 export function Manifesto() {
   return (
     <section id="manifesto" className="py-20 md:py-[160px] border-b border-white/10">
-      <div className="container mx-auto px-[5%]">
+      <div className="container">
         <div className="grid grid-cols-12 gap-0">
           <div className="col-span-12 lg:col-span-7 lg:col-start-2">
-            <Reveal><p className="font-mono text-[11px] uppercase tracking-[0.3em] text-accent mb-8">/ IDENTITY_PROTOCOL // SECTOR_1</p></Reveal>
-            <Reveal delay={0.1}><h2 className="text-6xl md:text-8xl mb-12">THE ARCHITECTURE<br />OF THE UNDERGROUND.</h2></Reveal>
+            <Reveal><p className="font-mono text-[10px] md:text-[11px] uppercase tracking-[0.3em] text-accent mb-8">/ IDENTITY_PROTOCOL // SECTOR_1</p></Reveal>
+            <Reveal delay={0.1}><h2 className="text-5xl md:text-8xl mb-12">THE ARCHITECTURE<br />OF THE UNDERGROUND.</h2></Reveal>
             <Reveal delay={0.2}>
-              <p className="text-lg md:text-xl text-foreground/80 max-w-2xl mb-12 leading-relaxed">
+              <p className="text-base md:text-xl text-foreground/80 max-w-2xl mb-12 leading-relaxed">
                 VORN exists in the margins. We do not participate in the noise. We build artifacts of identity for those who move with intentionality. Permanent documentation of the undercurrent.
               </p>
             </Reveal>
@@ -38,7 +40,7 @@ export function ProductGrid() {
 
   return (
     <section id="archive" className="py-20 md:py-[160px] border-b border-white/10">
-      <div className="container mx-auto px-[5%]">
+      <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
           {PRODUCTS.map((p, i) => (
             <Reveal key={p.id} delay={i * 0.1}>
@@ -52,7 +54,13 @@ export function ProductGrid() {
                   }}
                   className={`aspect-[4/5] overflow-hidden border border-white/10 relative transition-all duration-700 cursor-pointer glitch-hover ${p.status === "sold_out" ? "grayscale contrast-75 cursor-not-allowed" : "grayscale hover:grayscale-0 hover:scale-[1.02] contrast-110"}`}
                 >
-                  <img src={p.image} alt={p.title} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
+                  <Image 
+                    src={p.image} 
+                    alt={p.title} 
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                    className="object-cover transition-transform duration-1000 group-hover:scale-110" 
+                  />
                   
                   {/* TACTICAL METADATA OVERLAY (Desktop Only) */}
                   <div className="absolute top-4 left-4 font-mono text-[9px] bg-black/80 px-2 py-1 border border-white/10 hidden md:block">
@@ -83,8 +91,8 @@ export function ProductGrid() {
                 {/* MOBILE METADATA & INFO */}
                 <div className="mt-6 flex flex-col">
                   <div className="flex justify-between items-start mb-2">
-                    <h3 className="text-xl md:text-2xl font-bold uppercase leading-none">{p.title}</h3>
-                    <p className={`font-mono text-[12px] md:text-[14px] ${p.status === "sold_out" ? "line-through text-dim" : "text-accent font-bold"}`}>
+                    <h3 className="text-2xl md:text-2xl font-bold uppercase leading-none">{p.title}</h3>
+                    <p className={`font-mono text-[14px] md:text-[14px] ${p.status === "sold_out" ? "line-through text-dim" : "text-accent font-bold"}`}>
                       {p.price}
                     </p>
                   </div>
@@ -100,7 +108,7 @@ export function ProductGrid() {
                         addItem({ ...p, quantity: 1 });
                         playBlip("mid");
                       }}
-                      className="md:hidden mt-6 w-full border border-white/20 py-4 font-mono text-[10px] uppercase tracking-widest hover:border-accent hover:text-accent transition-colors"
+                      className="md:hidden mt-6 w-full bg-accent text-black font-mono text-[11px] font-bold py-4 uppercase tracking-[0.2em] hover:bg-white transition-colors"
                     >
                       Secure_Artifact
                     </button>
@@ -120,22 +128,31 @@ export function Lookbook() {
   const { playBlip } = useSystemAudio();
   return (
     <section id="lookbook" className="py-20 md:py-[160px] border-b border-white/10">
-      <div className="container mx-auto px-[5%]">
+      <div className="container">
         <div className="grid grid-cols-12 gap-0 items-center">
           <div className="col-span-12 lg:col-span-7">
-            <Reveal width="100%"><div className="aspect-video relative border border-white/10 overflow-hidden"><img src="/images/lookbook.png" alt="Lookbook" className="w-full h-full object-cover grayscale contrast-125 hover:scale-105 transition-transform duration-[3000ms]" /></div></Reveal>
+            <Reveal width="100%">
+              <div className="aspect-video relative border border-white/10 overflow-hidden">
+                <Image 
+                  src="/images/lookbook.png" 
+                  alt="Lookbook" 
+                  fill
+                  className="object-cover grayscale contrast-125 hover:scale-105 transition-transform duration-[3000ms]" 
+                />
+              </div>
+            </Reveal>
           </div>
-          <div className="col-span-12 lg:col-span-4 lg:col-start-9">
-            <Reveal><p className="font-mono text-[11px] uppercase tracking-[0.3em] text-accent mb-8">/ DOCUMENT_01 // SECTOR_4</p></Reveal>
-            <Reveal delay={0.2}><h2 className="text-6xl md:text-8xl mb-8 leading-[0.85]">NIGHT<br />TRAJECTORY</h2></Reveal>
-            <Reveal delay={0.3}><p className="text-dim mb-12">Sector 4 surveillance. Documentation of movement through concrete and shadow. No models. Only presence.</p></Reveal>
+          <div className="col-span-12 lg:col-span-4 lg:col-start-9 mt-12 lg:mt-0">
+            <Reveal><p className="font-mono text-[10px] md:text-[11px] uppercase tracking-[0.3em] text-accent mb-8">/ DOCUMENT_01 // SECTOR_4</p></Reveal>
+            <Reveal delay={0.2}><h2 className="text-5xl md:text-8xl mb-8 leading-[0.85]">NIGHT<br />TRAJECTORY</h2></Reveal>
+            <Reveal delay={0.3}><p className="text-dim text-sm md:text-base mb-12">Sector 4 surveillance. Documentation of movement through concrete and shadow. No models. Only presence.</p></Reveal>
             <Reveal delay={0.4}>
               <button 
                 onClick={() => {
                   window.location.href = "/archive";
                   playBlip("high");
                 }}
-                className="border border-white/20 px-8 py-4 font-mono text-[11px] uppercase tracking-widest hover:border-accent hover:text-accent transition-all"
+                className="border border-white/20 px-8 py-4 font-mono text-[11px] uppercase tracking-widest hover:border-accent hover:text-accent transition-all w-full md:w-auto"
               >
                 VIEW_RECORDS
               </button>
@@ -160,12 +177,17 @@ export function FeaturedDetail() {
 
   return (
     <section className="py-20 md:py-[160px] border-b border-white/10">
-      <div className="container mx-auto px-[5%]">
+      <div className="container">
         <div className="grid grid-cols-12 gap-0 items-center">
           <div className="col-span-12 lg:col-span-6 lg:col-start-2">
             <Reveal width="100%">
               <div className="aspect-square border border-white/10 overflow-hidden relative group">
-                <img src={item.image} alt="Featured" className="w-full h-full object-cover grayscale contrast-110 hover:scale-105 transition-transform duration-[3000ms]" />
+                <Image 
+                  src={item.image} 
+                  alt="Featured" 
+                  fill
+                  className="object-cover grayscale contrast-110 hover:scale-105 transition-transform duration-[3000ms]" 
+                />
                 
                 {/* LIVE FEED OVERLAY */}
                 <div className="absolute inset-0 pointer-events-none p-6 flex flex-col justify-between">
@@ -188,20 +210,18 @@ export function FeaturedDetail() {
                       <div>{new Date().toISOString().split('T')[0]}</div>
                    </div>
                 </div>
-
-                {/* NOISE OVERLAY (Handled by global CSS) */}
               </div>
             </Reveal>
           </div>
-          <div className="col-span-12 lg:col-span-4 lg:col-start-9">
-            <Reveal><p className="font-mono text-[11px] uppercase tracking-[0.3em] text-accent mb-8">/ SECURE_PROTOCOL</p></Reveal>
-            <Reveal delay={0.1}><h2 className="text-6xl md:text-8xl mb-12">{item.title}</h2></Reveal>
+          <div className="col-span-12 lg:col-span-4 lg:col-start-9 mt-12 lg:mt-0">
+            <Reveal><p className="font-mono text-[10px] md:text-[11px] uppercase tracking-[0.3em] text-accent mb-8">/ SECURE_PROTOCOL</p></Reveal>
+            <Reveal delay={0.1}><h2 className="text-5xl md:text-8xl mb-12">{item.title}</h2></Reveal>
             <Reveal delay={0.2}>
               <div className="grid grid-cols-2 border border-white/10 mb-12">
-                <div className="p-6 border-r border-b border-white/10"><p className="font-mono text-[9px] text-dim mb-2">Material</p><p className="text-xs uppercase font-bold">460GSM_JERSEY</p></div>
-                <div className="p-6 border-b border-white/10"><p className="font-mono text-[9px] text-dim mb-2">Frame</p><p className="text-xs uppercase font-bold">BOX_OVERSIZE</p></div>
-                <div className="p-6 border-r border-white/10"><p className="font-mono text-[9px] text-dim mb-2">Origin</p><p className="text-xs uppercase font-bold">SECTOR_4</p></div>
-                <div className="p-6"><p className="font-mono text-[9px] text-dim mb-2">Dye</p><p className="text-xs uppercase font-bold">COLD_ARCHIVE</p></div>
+                <div className="p-4 md:p-6 border-r border-b border-white/10"><p className="font-mono text-[8px] md:text-[9px] text-dim mb-2">Material</p><p className="text-[10px] md:text-xs uppercase font-bold">460GSM_JERSEY</p></div>
+                <div className="p-4 md:p-6 border-b border-white/10"><p className="font-mono text-[8px] md:text-[9px] text-dim mb-2">Frame</p><p className="text-[10px] md:text-xs uppercase font-bold">BOX_OVERSIZE</p></div>
+                <div className="p-4 md:p-6 border-r border-white/10"><p className="font-mono text-[8px] md:text-[9px] text-dim mb-2">Origin</p><p className="text-[10px] md:text-xs uppercase font-bold">SECTOR_4</p></div>
+                <div className="p-4 md:p-6"><p className="font-mono text-[8px] md:text-[9px] text-dim mb-2">Dye</p><p className="text-[10px] md:text-xs uppercase font-bold">COLD_ARCHIVE</p></div>
               </div>
             </Reveal>
             <Reveal delay={0.3}>
@@ -210,7 +230,7 @@ export function FeaturedDetail() {
                   addItem({ ...item, quantity: 1 });
                   playBlip("mid");
                 }}
-                className="bg-accent text-black font-mono text-[11px] font-bold px-12 py-6 tracking-[0.1em] hover:bg-white transition-colors"
+                className="bg-accent text-black font-mono text-[11px] font-bold px-12 py-6 tracking-[0.1em] hover:bg-white transition-colors w-full md:w-auto"
               >
                 Secure Artifact
               </button>
@@ -225,32 +245,40 @@ export function FeaturedDetail() {
 // NEWSLETTER
 export function Newsletter() {
   const { playSuccess } = useSystemAudio();
+  const [submitted, setSubmitted] = useState(false);
+
   return (
     <section className="py-20 md:py-[160px] bg-white/[0.02]">
-      <div className="container mx-auto px-[5%]">
+      <div className="container">
         <div className="grid grid-cols-12 gap-12">
           <div className="col-span-12 lg:col-span-7">
-            <Reveal><p className="font-mono text-[11px] uppercase tracking-[0.3em] text-accent mb-8">/ ACCESS_REQUEST // SECTOR_X</p></Reveal>
-            <Reveal delay={0.1}><h2 className="text-6xl md:text-8xl mb-8">JOIN THE SYSTEM.</h2></Reveal>
+            <Reveal><p className="font-mono text-[10px] md:text-[11px] uppercase tracking-[0.3em] text-accent mb-8">/ ACCESS_REQUEST // SECTOR_X</p></Reveal>
+            <Reveal delay={0.1}><h2 className="text-5xl md:text-8xl mb-8">JOIN THE SYSTEM.</h2></Reveal>
           </div>
           <div className="col-span-12 lg:col-span-5 flex items-end">
             <Reveal width="100%" delay={0.3}>
-              <div className="w-full border-b border-white/20 flex items-center pb-6 group hover:border-accent transition-colors">
-                <input 
-                  type="text" 
-                  placeholder="ACCESS_CODE_REQUIRED" 
-                  className="bg-transparent border-none w-full font-mono text-sm outline-none text-foreground placeholder:text-dim/50" 
-                />
-                <button 
-                  onClick={() => {
-                    playSuccess();
-                    alert("ACCESS_GRANTED // CHECK_ENCRYPTED_COMMS");
-                  }}
-                  className="font-mono text-accent text-[11px] font-bold tracking-[0.1em]"
-                >
-                  [ REQUEST_ACCESS ]
-                </button>
-              </div>
+              {submitted ? (
+                <div className="w-full border-b border-accent pb-6 font-mono text-accent text-xs">
+                  ACCESS_GRANTED // CHECK_ENCRYPTED_COMMS
+                </div>
+              ) : (
+                <div className="w-full border-b border-white/20 flex items-center pb-6 group hover:border-accent transition-colors">
+                  <input 
+                    type="text" 
+                    placeholder="ACCESS_CODE_REQUIRED" 
+                    className="bg-transparent border-none w-full font-mono text-sm outline-none text-foreground placeholder:text-dim/50" 
+                  />
+                  <button 
+                    onClick={() => {
+                      playSuccess();
+                      setSubmitted(true);
+                    }}
+                    className="font-mono text-accent text-[11px] font-bold tracking-[0.1em] flex-shrink-0"
+                  >
+                    [ REQUEST_ACCESS ]
+                  </button>
+                </div>
+              )}
             </Reveal>
           </div>
         </div>
