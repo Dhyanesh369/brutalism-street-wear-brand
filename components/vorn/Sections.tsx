@@ -41,10 +41,10 @@ export function ProductGrid() {
   return (
     <section id="archive" className="py-20 md:py-[160px] border-b border-white/10">
       <div className="container">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 justify-items-center">
           {PRODUCTS.map((p, i) => (
             <Reveal key={p.id} delay={i * 0.1}>
-              <div className={`group relative flex flex-col ${p.status === "sold_out" ? "opacity-50" : ""}`}>
+              <div className={`group relative flex flex-col mx-auto max-w-sm w-full ${p.status === "sold_out" ? "opacity-50" : ""}`}>
                 <div 
                   onClick={() => {
                     if (p.status === "active") {
@@ -108,7 +108,7 @@ export function ProductGrid() {
                         addItem({ ...p, quantity: 1 });
                         playBlip("mid");
                       }}
-                      className="md:hidden mt-6 w-full bg-accent text-black font-mono text-[11px] font-bold py-4 uppercase tracking-[0.2em] hover:bg-white transition-colors"
+                      className="md:hidden mt-6 w-full !bg-[#C8FF00] text-black font-mono text-[11px] font-bold py-4 uppercase tracking-[0.2em] hover:bg-white transition-colors"
                     >
                       Secure_Artifact
                     </button>

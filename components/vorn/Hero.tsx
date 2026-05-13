@@ -31,7 +31,7 @@ export default function Hero() {
             <Reveal delay={0.4}>
               <a
                 href="/archive"
-                className="inline-block bg-accent text-black font-mono text-[11px] uppercase font-bold px-12 py-6 tracking-[0.1em] hover:bg-white transition-colors"
+                className="inline-block !bg-[#C8FF00] text-black font-mono text-[11px] uppercase font-bold px-12 py-6 tracking-[0.1em] hover:bg-white transition-colors"
               >
                 ENTER_WAREHOUSE
               </a>
